@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "format": "ai-project-prep",
+    "version": "1.0",
+    "exportedAt": "2026-06-25T07:17:53.400Z",
+    "appName": "Second Store Loan",
+    "generator": "AI Project Prep"
+  },
+  "data": {
+    "appName": "Second Store Loan",
+    "appTagline": "Jual, beli, dan sewa kendaraan lebih mudah, aman, dan terpercaya.",
+    "appPurpose": "Membangun aplikasi marketplace kendaraan yang memudahkan pengguna untuk menjual kendaraan, membeli kendaraan bekas atau baru dari seller terpercaya, serta menyewa kendaraan harian, mingguan, atau bulanan dalam satu platform. Aplikasi ini harus membantu transaksi jadi lebih cepat, transparan, dan praktis, baik untuk individu, dealer, maupun rental kendaraan.",
+    "targetUsers": "Pembeli kendaraan, Penjual kendaraan pribadi, Dealer kendaraan, Penyedia rental kendaraan, Admin platform",
+    "problemStatement": "Saat ini proses jual beli dan sewa kendaraan sering tersebar di berbagai platform, informasi kendaraan tidak selalu lengkap, proses negosiasi tidak terstruktur, dan pencarian unit sewa memakan waktu. Aplikasi ini diharapkan menjadi solusi terpusat untuk listing kendaraan, pencarian unit, pengajuan sewa, dan pengelolaan transaksi secara lebih efisien.",
+    "mvpFeatures": "Login & Register\nLogin dengan role user, seller, rental, admin\nProfil pengguna\nListing kendaraan jual\nListing kendaraan sewa\nDetail kendaraan lengkap\nPencarian kendaraan\nFilter berdasarkan merek, tipe, harga, lokasi, tahun, transmisi\nAjukan beli kendaraan\nAjukan sewa kendaraan\nWishlist / simpan kendaraan\nChat / kontak penjual via tombol WhatsApp atau kontak langsung\nUpload foto kendaraan\nDashboard seller / rental\nKelola listing kendaraan\nStatus kendaraan tersedia, terjual, disewa\nRiwayat transaksi user\nVerifikasi data listing oleh admin\nManajemen pengguna oleh admin",
+    "futureFeatures": "Integrasi payment gateway\nBooking fee online\nSimulasi cicilan / pembiayaan\nNotifikasi push\nReview dan rating seller / rental\nLive chat dalam aplikasi\nIntegrasi GPS / maps\nUpload video kendaraan\nPromo dan voucher\nMulti cabang rental / dealer",
+    "outOfScope": "Lelang kendaraan\nTracking kendaraan real-time\nMarketplace sparepart\nIntegrasi asuransi otomatis\nAI pricing prediction",
+    "frontend": "Flutter",
+    "backend": "Laravel API",
+    "database": "MySQL",
+    "auth": "Laravel Sanctum / JWT",
+    "styling": "Flutter Material 3",
+    "hosting": "Shared hosting untuk backend Laravel dan MySQL, serta build Flutter untuk distribusi aplikasi mobile",
+    "otherTech": "REST API\nFirebase Cloud Messaging untuk notifikasi nanti\nCloud storage untuk upload gambar\nWhatsApp deep link untuk kontak seller\nStruktur deployment Laravel harus kompatibel dengan shared hosting",
+    "uiLibraries": "State management: Provider atau Riverpod\nHTTP client: Dio\nRouting: GoRouter\nForm validation: Flutter Form + validator\nLocal storage: SharedPreferences\nImage picker: image_picker\nCarousel banner kendaraan: carousel_slider\nDate picker untuk sewa: table_calendar atau date picker bawaan\nLoading & feedback: snackbar, dialog konfirmasi, dan loading overlay",
+    "codingConventions": "Gunakan arsitektur feature-first\nPisahkan layer presentation, domain, dan data\nGunakan Bahasa Indonesia untuk label UI\nNama variabel dan function pakai bahasa Inggris yang jelas\nSemua response API harus konsisten\nGunakan reusable widget untuk card, form field, button, dan badge status",
+    "flows": [
+      {
+        "name": "Beli Kendaraan",
+        "steps": "User buka aplikasi\nUser login atau register\nUser cari kendaraan berdasarkan kategori atau filter\nUser buka detail kendaraan\nUser lihat foto, spesifikasi, harga, lokasi, dan kontak seller\nUser klik tombol minat beli / hubungi penjual\nUser kirim permintaan atau lanjut komunikasi\nSeller menerima permintaan\nTransaksi diproses offline atau melalui sistem lanjutan\nStatus kendaraan diperbarui menjadi terjual bila selesai"
+      },
+      {
+        "name": "Sewa Kendaraan",
+        "steps": "User buka aplikasi\nUser login atau register\nUser cari kendaraan sewa\nUser filter berdasarkan lokasi, harga sewa, durasi, dan jenis kendaraan\nUser buka detail unit sewa\nUser pilih tanggal mulai dan durasi sewa\nUser ajukan permintaan sewa\nPenyedia rental menerima atau menolak permintaan\nUser menerima konfirmasi\nStatus kendaraan berubah menjadi disewa selama periode aktif"
+      },
+      {
+        "name": "Seller Menjual Kendaraan",
+        "steps": "Seller login\nSeller masuk ke dashboard\nSeller tambah listing kendaraan\nSeller isi data kendaraan dan upload foto\nAdmin verifikasi listing\nListing tampil di aplikasi\nSeller menerima minat beli dari user\nSeller ubah status kendaraan saat transaksi selesai"
+      },
+      {
+        "name": "Rental Menambahkan Unit Sewa",
+        "steps": "Rental login\nRental masuk ke dashboard\nRental tambah unit kendaraan sewa\nRental isi tarif harian, mingguan, bulanan\nRental upload foto dan syarat sewa\nAdmin verifikasi listing\nUnit tampil untuk user\nRental menerima permintaan sewa dari user"
+      }
+    ],
+    "tables": [
+      {
+        "name": "users",
+        "columns": "id\nname\nemail\nphone\npassword\nrole\naddress\nphoto\nis_active\ncreated_at\nupdated_at",
+        "notes": "1-N vehicles, 1-N purchase_requests, 1-N rental_requests, 1-N wishlists"
+      },
+      {
+        "name": "vehicle_brands",
+        "columns": "id\nname\ncreated_at\nupdated_at",
+        "notes": "1-N vehicles"
+      },
+      {
+        "name": "vehicles",
+        "columns": "id\nowner_id\nbrand_id\ntitle\nslug\ncategory\ntransaction_type\nprice\nrental_price_daily\nrental_price_weekly\nrental_price_monthly\nyear\ncolor\ntransmission\nfuel_type\nmileage\nlocation\ndescription\nstatus\nthumbnail\ncreated_at\nupdated_at",
+        "notes": "milik users (owner_id), milik vehicle_brands (brand_id), 1-N vehicle_images, 1-N purchase_requests, 1-N rental_requests, 1-N wishlists, 1-N transactions"
+      },
+      {
+        "name": "vehicle_images",
+        "columns": "id\nvehicle_id\nimage_url\nsort_order\ncreated_at\nupdated_at",
+        "notes": "milik vehicles"
+      },
+      {
+        "name": "purchase_requests",
+        "columns": "id\nvehicle_id\nuser_id\nmessage\noffer_price\nstatus\ncreated_at\nupdated_at",
+        "notes": "milik vehicles & users"
+      },
+      {
+        "name": "rental_requests",
+        "columns": "id\nvehicle_id\nuser_id\nrental_start_date\nrental_end_date\ntotal_days\ntotal_price\nnote\nstatus\ncreated_at\nupdated_at",
+        "notes": "milik vehicles & users"
+      },
+      {
+        "name": "wishlists",
+        "columns": "id\nuser_id\nvehicle_id\ncreated_at",
+        "notes": "milik users & vehicles"
+      },
+      {
+        "name": "transactions",
+        "columns": "id\nvehicle_id\nbuyer_id\nseller_id\nrental_request_id\ntransaction_type\namount\npayment_status\ntransaction_status\ncreated_at\nupdated_at",
+        "notes": "milik vehicles"
+      },
+      {
+        "name": "admin_verifications",
+        "columns": "id\nvehicle_id\nadmin_id\nnotes\nstatus\nverified_at\ncreated_at\nupdated_at",
+        "notes": "milik vehicles, diverifikasi oleh admin (users)"
+      }
+    ],
+    "dbNotes": "users 1-N vehicles, vehicle_brands 1-N vehicles, vehicles 1-N vehicle_images, users 1-N purchase_requests, users 1-N rental_requests, vehicles 1-N purchase_requests, vehicles 1-N rental_requests, users 1-N wishlists, vehicles 1-N wishlists, vehicles 1-N transactions",
+    "primaryColor": "#0066FF",
+    "secondaryColor": "#FF5500",
+    "fontFamily": "Poppins",
+    "uiStyle": "Modern, clean, automotive marketplace, profesional, terpercaya, energik, mobile-first",
+    "uiLanguage": "id",
+    "uiReferences": "OLX otomotif\nTraveloka style clean layout\nMarketplace modern dengan card listing besar\nDashboard seller sederhana dan informatif",
+    "uiRules": "Sistem warna mengikuti identitas brand/logo: Brand Blue #0066FF (warna 'Second Store' di logo, kesan tepercaya/aman/profesional) sebagai primary color\nVibrant Orange #FF5500 (warna 'Loan' & lengkungan panah di logo, kesan energik/cepat/menarik perhatian) sebagai accent/CTA color - alternatif: #FF4500\nDeep Navy #0B1E4E (warna bayang huruf S di logo, kesan kokoh/premium) untuk teks utama pengganti hitam pekat, latar footer, dan card dark mode - alternatif: #102A6B\nWarna netral: Clean White #FFFFFF dan Light Gray #F8F9FA untuk background aplikasi\nKomposisi warna ikuti aturan 60-30-10: 60% warna netral (background putih/abu muda), 30% Brand Blue (navigasi, judul, card, tombol sekunder), 10% Vibrant Orange (hanya untuk elemen krusial: tombol CTA seperti 'Ajukan Sekarang'/'Beli', notifikasi penting, badge aktif)\nJangan pakai oranye berlebihan - khususkan hanya untuk elemen yang butuh perhatian instan user\nAnimasi Splash Screen: Saat pertama kali dibuka, logo aplikasi memiliki efek animasi masuk yang halus (seperti Fade-In dengan Scale-Up/Zoom-In perlahan selama 1.2 - 1.5 detik), disusul oleh kemunculan slogan (\"Jual, beli, dan sewa kendaraan lebih mudah, aman, dan terpercaya.\") di bawahnya dengan efek Fade-In + Slide-Up lambat, serta kemunculan loading indicator yang smooth.\nMobile-first\nGunakan bottom navigation untuk user (5 menu utama: Beranda, Cari, Wishlist, Transaksi, Profil)\nGunakan dashboard tab untuk seller dan rental\nCard kendaraan harus menampilkan foto utama, harga, lokasi, tahun, dan status\nGunakan badge warna untuk status tersedia, terjual, disewa, pending\nFilter dan search harus mudah dijangkau di mobile\nForm input dibuat ringkas dan jelas",
+    "devPhases": "Fase 1: Setup project Flutter dan backend API\nFase 2: Auth, role user, dan profil\nFase 3: Listing kendaraan jual dan sewa\nFase 4: Detail kendaraan, search, filter, wishlist\nFase 5: Pengajuan beli dan pengajuan sewa\nFase 6: Dashboard seller / rental\nFase 7: Admin panel verifikasi listing\nFase 8: Riwayat transaksi dan penyempurnaan UI\nFase 9: Integrasi notifikasi dan deployment",
+    "aiRules": "Fokus dulu pada MVP\nJangan menambahkan fitur di luar scope tanpa diminta\nGunakan Flutter untuk frontend mobile\nGunakan Laravel API untuk backend\nSemua label UI pakai Bahasa Indonesia\nBuat struktur kode yang rapi dan scalable\nGunakan reusable component\nSemua form wajib validasi\nSemua data kendaraan harus punya status yang jelas\nPrioritaskan performa aplikasi mobile\nDesain harus modern, clean, dan mudah dipahami user umum",
+    "apiFormat": "{\n  \"success\": true,\n  \"message\": \"Data berhasil diambil\",\n  \"data\": {},\n  \"meta\": {}\n}",
+    "sampleData": "Kendaraan: Toyota Avanza 2021, otomatis, hitam, Jakarta, Rp185000000\nKendaraan sewa: Honda Brio 2022, manual, Surabaya, Rp350000 per hari\nUser: Andi Pratama, andi@email.com, role user\nSeller: Showroom Maju Motor, role seller\nRental: Sewa Mobil Nusantara, role rental"
+  }
+}

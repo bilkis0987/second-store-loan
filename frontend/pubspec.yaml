@@ -1,0 +1,62 @@
+name: second_store_loan
+description: "Second Store Loan - Marketplace kendaraan: jual, beli, dan sewa kendaraan lebih mudah, aman, dan terpercaya."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State Management
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+
+  # HTTP Client
+  dio: ^5.7.0
+
+  # Routing
+  go_router: ^14.8.1
+
+  # Local Storage
+  shared_preferences: ^2.5.3
+
+  # Image Picker
+  image_picker: ^1.1.2
+
+  # Carousel
+  carousel_slider: ^5.0.0
+
+  # Date Picker / Calendar
+  table_calendar: ^3.2.0
+
+  # URL Launcher (untuk WhatsApp deep link)
+  url_launcher: ^6.3.1
+
+  # Google Fonts (Poppins)
+  google_fonts: ^6.2.1
+
+  # Image Caching
+  cached_network_image: ^3.4.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+  # Riverpod code generation
+  riverpod_generator: ^2.6.3
+  build_runner: ^2.4.15
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
