@@ -1,0 +1,58 @@
+# Flutter
+frontend/build/
+frontend/.dart_tool/
+frontend/.packages
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/pubspec.lock
+frontend/*.iml
+frontend/ios/Pods/
+frontend/ios/.symlinks/
+frontend/ios/Flutter/Flutter.framework
+frontend/ios/Flutter/Flutter.podspec
+frontend/ios/Flutter/ephemeral/
+frontend/ios/Runner.xcodeproj/project.xcworkspace/
+frontend/ios/Runner.xcodeproj/xcshareddata/
+frontend/ios/Runner.xcworkspace/
+frontend/ios/Runner/Assets.xcassets/AppIcon.appiconset/
+frontend/ios/Runner/Assets.xcassets/LaunchImage.imageset/
+frontend/macos/Flutter/ephemeral/
+frontend/macos/Runner.xcodeproj/project.xcworkspace/
+frontend/macos/Runner.xcodeproj/xcshareddata/
+frontend/macos/Runner.xcworkspace/
+frontend/macos/Runner/Assets.xcassets/
+frontend/linux/flutter/generated_*
+frontend/windows/flutter/generated_*
+frontend/windows/runner/resources/
+
+# Laravel
+backend/vendor/
+backend/.env
+backend/storage/
+backend/bootstrap/cache/
+backend/public/storage/
+backend/*.log
+
+# Node / npm (if any)
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Android
+frontend/android/.gradle/
+frontend/android/build/
+frontend/android/local.properties
+frontend/android/key.properties
+
+# Temp
+*.tmp
+*.bak
